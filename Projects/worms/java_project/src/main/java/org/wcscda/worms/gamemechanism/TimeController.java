@@ -21,7 +21,9 @@ public class TimeController implements ActionListener {
   private int activePlayerIndex = 0;
   private AbstractPhase currentPhase;
   private int phaseCount = 0;
-
+  // Add attribute numbers of players
+  private int nbPlayers = 3;
+  
   public TimeController() {
     initGame();
 
@@ -35,14 +37,22 @@ public class TimeController implements ActionListener {
     board = new PhysicalController();
     // Lucky luke because for the moment he is a poor lonesome
     // player
-    Player luckyLuke = createPlayer("Lucky Luke", Color.RED);
-
-    for (String name : new String[] {"Joly jumper", "rantanplan"}) {
-      Worm worm = luckyLuke.createWorm(name);
-      board.wormInitialPlacement(worm);
+  
+    // Create players and distribute worms to each players
+   
+    for (Integer i = 0; i < nbPlayers; i++) {
+    	Player luckyLuke = createPlayer("Lucky Luke" + i.toString(), Color.RED);
+    	
+    	// Create Worm that belong to the player
+    	
+    	for (String name : new String[] {"Joly jumper" + i.toString(), "rantanplan" + i.toString()}) {
+    		Worm worm = luckyLuke.createWorm(name);
+    		board.wormInitialPlacement(worm);
+    		System.out.println(name);
+    	}
+    	
+    	setNextWorm();
     }
-
-    setNextWorm();
   }
 
   public void setNextWorm() {
