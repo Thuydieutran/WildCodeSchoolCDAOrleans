@@ -1,6 +1,7 @@
 public class Animal{
 	
 	private String name;
+	// NRO 2021-09-27 : non !! Les attribus sont privates
 	protected String sound;
 	protected String movement;
 	

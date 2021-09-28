@@ -1,0 +1,4 @@
+// NRO 2021-09-27 : svp pas de fichier eclipse (.classpath / .project)
+//  Les attributs sont TOUJOURS en private
+//  Attention au DRY (Don't Repeat Yourself)
+//  Syntaxe bien comprise !
