@@ -17,6 +17,7 @@ public abstract class AbstractDrawableElement implements Comparable<AbstractDraw
   }
 
   public static void processToBeRemovedAndAdded() {
+    toBeRemoved.forEach(AbstractDrawableElement::onRemoval);
     allDrawable.removeAll(toBeRemoved);
     allDrawable.addAll(toBeAdded);
     toBeRemoved.clear();
@@ -67,4 +68,10 @@ public abstract class AbstractDrawableElement implements Comparable<AbstractDraw
     }
     return id.compareTo(o.id);
   }
+
+  protected void onRemoval() {}
+
+  // NRO 2021-10-05 : Override if you want something to be
+  //  checked on iteration start
+  public void onIterationBegin() {}
 }

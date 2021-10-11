@@ -42,14 +42,23 @@ public class Player {
   }
 
   public Worm getActiveWorm() {
+    if (getWorms().isEmpty()) {
+      return null;
+    }
     return getWorms().get(currentWormIndex);
   }
 
   public void setNextWorm() {
+    if (worms.isEmpty()) return;
+
     currentWormIndex += 1;
     currentWormIndex %= worms.size();
   }
 
+  /* NRO 2021-09-30 : TODO-student make a better version of
+   * this, this is just a temporary version :-)
+   * This should call the inventory, and handle
+   */
   public void changeWeapon() {
     if (currentWeapon.isChangingWeaponDisabled()) {
       return;
@@ -64,5 +73,9 @@ public class Player {
 
   public void initWeapon() {
     currentWeapon = new Hadoken();
+  }
+
+  public boolean hasWorms() {
+    return !getWorms().isEmpty();
   }
 }
